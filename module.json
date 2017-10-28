@@ -1,0 +1,9 @@
+{
+    "name": "ease",
+    "description": "This module adds a Utils.ease function, which allows for non-linear modulation / "Easing" of values.",
+    "author": "Marc Krenn",
+
+    "require": "require 'ease'",
+    "install": "ease.coffee",
+    "example": "example.coffee"
+}

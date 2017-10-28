@@ -1,15 +1,13 @@
 ###
 Easie.coffee (https://github.com/jimjeffers/Easie)
 Project created by J. Jeffers
-
 Robert Penner's Easing Equations in CoffeeScript
 http://robertpenner.com/easing/
-
 DISCLAIMER: Software provided as is with no warranty of any type. 
 Don't do bad things with this :)
 ###
 
-class @Easie
+class Easie
   
   # Back Easing 
   # -----------------------------------------------------
@@ -223,3 +221,23 @@ class @Easie
   
   @sineInOut: (time,begin,change,duration) ->
     -change/2 * (Math.cos(Math.PI*time/duration) - 1) + begin
+
+
+# Framer-friendly API by Marc Krenn
+
+Utils.ease = (value, rangeA, rangeB, curve="linearNone", opt = {}) ->
+
+  opt.overshoot = 1.70158 unless opt.overshoot?
+  opt.amplitude = null unless opt.amplitude?
+  opt.period = null unless opt.period?
+  opt.limit = false unless opt.limit?
+
+  input = Utils.mapRange(value, rangeA[0], rangeA[1], 0, 1)
+
+  if curve.indexOf("elastic") isnt -1
+    e = Easie[curve](input, 0, 1, 1, opt.amplitude, opt.period)
+  else
+    e = Easie[curve](input, 0, 1, 1, opt.overshoot)
+
+  return Utils.modulate(e, [0,1], rangeB, opt.limit)
+
