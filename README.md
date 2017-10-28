@@ -3,7 +3,7 @@
 
 # framer-ease
 
-This module adds a Utils.ease function, which allows for non-linear modulation / "Easing" of values.
+This module adds a Utils.ease function, which allows for non-linear modulation / "Easing" of values. Based on [Jim Jeffers' coffeescript port](https://github.com/jimjeffers/Easie) of [Robert Penner's easing functions](http://robertpenner.com/easing/).
 <br />
 
 ### [Example project on framer.cloud](https://framer.cloud/tmLXp/)
