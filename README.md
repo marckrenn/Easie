@@ -8,7 +8,6 @@ This module adds a Utils.ease function, which allows for non-linear modulation /
 
 ### [Example project on framer.cloud](https://framer.cloud/tmLXp/)
 
-
 <br />
 
 ## Getting started
@@ -62,6 +61,18 @@ layer.y = Utils.ease(slider.value, [0,1], [0,100], "expoIn")
 # Example with options:
 layer.y = Utils.ease(slider.value, [0,1], [0,100], "elasticInOut", {limit: true, amplitude: 2, period: 0})
 
+
+
+
+# Bonus: Utils.randomNumberBiased
+# Example project 1 – instant: https://framer.cloud/dUHzn/
+# Example project 2 – animated: https://framer.cloud/rMoti/
+
+# Syntax:
+Utils.randomNumberBiased(from, to, curve, options*)
+
+# Example:
+print Utils.randomNumberBiased(0, 100, "expoIn")
 ```
 
 
