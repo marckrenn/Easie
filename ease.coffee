@@ -241,3 +241,21 @@ Utils.ease = (value, rangeA, rangeB, curve="linearNone", opt = {}) ->
 
   return Utils.modulate(e, [0,1], rangeB, opt.limit)
 
+
+Utils.randomNumberCrypto = (from = 0, to = 1) ->
+  arr = new Uint32Array(1)
+  r = window.crypto.getRandomValues arr
+  return Utils.mapRange(r[0], 0, 4294967295, from, to)
+
+
+Utils.randomNumberBiased = (from, to, curve = "linearNone", options = {}) ->
+
+  if to is from then return to
+
+  roll = ->
+    randomNumber = Utils.randomNumberCrypto(from, to)
+    upperLimit = Utils.ease(randomNumber, [from, to], [0, 1], curve, options)
+    probe = Utils.randomNumberCrypto(0, 1)
+    if probe < upperLimit then return randomNumber else roll() # again
+
+  roll()
